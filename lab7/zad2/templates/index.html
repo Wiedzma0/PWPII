@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <title>Nauczyciele</title>
+</head>
+<body>
+  <h1>Lista nauczycieli</h1>
+  <ul>
+    {% for teacher in teachers %}
+      <li>
+        {{ teacher.name }} – {{ teacher.subject }} – {{ teacher.time }}
+        <a href="{{ url_for('delete', id=teacher.id) }}">Usuń</a>
+      </li>
+    {% endfor %}
+  </ul>
+
+  <h2>Dodaj nauczyciela</h2>
+  <form method="POST">
+    Imię: <input type="text" name="name" required><br>
+    Przedmiot: <input type="text" name="subject" required><br>
+    Godzina: <input type="text" name="time" required><br>
+    <button type="submit">Dodaj</button>
+  </form>
+</body>
+</html>
